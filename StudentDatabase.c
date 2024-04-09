@@ -96,7 +96,7 @@ void main()
 void addStudent()
 {
     system ("CLS");
-    char choice,temp[100],ch,roll0[15],roll1[15],roll2[15],phone[11];
+    char choice,ch,roll0[15],roll1[15],roll2[15],phone[11];
     int i=0,c=1,k=0,j=0,r1=1,r2=1,l=0;
     struct Student *TEMP;
     struct Student *NEW=(struct Student*)malloc(sizeof (struct Student));
@@ -180,7 +180,6 @@ void addStudent()
         }
     }
     printf ("\n\nEnter Name: ");
-    gets (temp);
     gets (NEW->name);
     printf ("\nEnter 10 digit Phone Number: ");
     memset (phone,'\0',sizeof (phone));

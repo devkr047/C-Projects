@@ -19,14 +19,15 @@ int a[10][18];
 void main()
 {
     char ch;
-    int i,j;
+    int i,j,k=10;
     restart(a);
     system ("CLS");
     printf ("\e[1;4;31mINSTRUCTIONS\e[m\n\n");
     printf ("\e[1;36m<*>\e[m \e[36mPlayer 1 --> \e[m\e[1;31mX\e[m\n");
     printf ("\e[1;36m<*>\e[m \e[36mPlayer 2 --> \e[m\e[1;32mO\e[m\n");
     printf ("\e[1;36m<*>\e[m \e[36mName of players must consist of atleast one character\e[m\n");
-    printf ("\e[1;36m<*>\e[m \e[36mUse numbers listed on board to fill block on your turn\e[m\n\n");
+    printf ("\e[1;36m<*>\e[m \e[36mUse numbers listed on board to fill block on your turn\e[m\n");
+    printf ("\e[1;36m<*>\e[m \e[36mNo need to hit \e[1;31mENTER\e[m\e[36m after number input at any point\e[m\n\n");
     printf ("\e[1;33mPress any key to continue\e[m");
     getch();
     ch=home();
@@ -205,7 +206,7 @@ void multiPlayer()
 }
 void startCompPlayerGame(char name1[50],char name2[50])
 {
-    char ch;
+    char ch,input;
     int k=0,n,stat,win,i=1;
     restart(a);
     while (1)
@@ -251,7 +252,21 @@ void startCompPlayerGame(char name1[50],char name2[50])
             printf ("\e[31m%s\e[m \e[1;33mvs\e[m \e[32m%s\e[m",name1,name2);
             draw(a);
             printf ("\n\e[31m%s's\e[m \e[33mTurn:\e[m \e[31m",name2);
-            scanf ("%d",&n);
+            while (1)
+            {
+                input=getch();
+                if ((int)input>=49 && (int)input<=57)
+                {
+                    printf ("%c",input);
+                    Sleep (300);
+                    break;
+                }
+                else
+                {
+                    continue;
+                }
+            }
+            n=(int)input-48;
             printf ("\e[m");
             stat=checkstatus(n,i);
             if (stat==0)
@@ -281,7 +296,7 @@ void startCompPlayerGame(char name1[50],char name2[50])
 }
 void startMultiPlayerGame(char name1[50],char name2[50])
 {
-    char ch;
+    char ch,input;
     int k=0,n,stat,win,i=1;
     restart(a);
     while (1)
@@ -292,7 +307,21 @@ void startMultiPlayerGame(char name1[50],char name2[50])
             printf ("\e[31m%s\e[m \e[1;33mvs\e[m \e[32m%s\e[m",name1,name2);
             draw(a);
             printf ("\n\e[31m%s's\e[m \e[33mTurn:\e[m \e[31m",name1);
-            scanf ("%d",&n);
+            while (1)
+            {
+                input=getch();
+                if ((int)input>=49 && (int)input<=57)
+                {
+                    printf ("%c",input);
+                    Sleep(300);
+                    break;
+                }
+                else
+                {
+                    continue;
+                }
+            }
+            n=(int)input-48;
             printf ("\e[m");
             stat=checkstatus(n,i);
             if (stat==0)
@@ -323,7 +352,21 @@ void startMultiPlayerGame(char name1[50],char name2[50])
             printf ("\e[31m%s\e[m \e[1;33mvs\e[m \e[32m%s\e[m",name1,name2);
             draw(a);
             printf ("\n\e[32m%s's\e[m \e[33mTurn:\e[m \e[32m",name2);
-            scanf ("%d",&n);
+            while (1)
+            {
+                input=getch();
+                if ((int)input>=49 && (int)input<=57)
+                {
+                    printf ("%c",input);
+                    Sleep (300);
+                    break;
+                }
+                else
+                {
+                    continue;
+                }
+            }
+            n=(int)input-48;
             printf ("\e[m");
             stat=checkstatus(n,i);
             if (stat==0)

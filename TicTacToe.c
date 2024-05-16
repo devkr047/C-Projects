@@ -216,11 +216,10 @@ void startCompPlayerGame(char name1[50],char name2[50])
             system ("CLS");
             printf ("\e[31m%s\e[m \e[1;33mvs\e[m \e[32m%s\e[m",name1,name2);
             draw(a);
-            printf ("\n\e[32m%s's\e[m \e[33mTurn:\e[m \e[32m",name1);
+            printf ("\n\e[31m%s's\e[m \e[33mTurn:\e[m \e[31m",name1);
             srand(time(NULL));
             n=(rand()%9)+1;
             Sleep (100);
-            printf ("\e[m");
             stat=checkstatus(n,i);
             if (stat==0)
             {
@@ -235,6 +234,7 @@ void startCompPlayerGame(char name1[50],char name2[50])
                 continue;
             }
         }
+        printf ("\e[m");
         win=checkwin(a);
         if (win!=-2)
         {
@@ -251,7 +251,7 @@ void startCompPlayerGame(char name1[50],char name2[50])
             system ("CLS");
             printf ("\e[31m%s\e[m \e[1;33mvs\e[m \e[32m%s\e[m",name1,name2);
             draw(a);
-            printf ("\n\e[31m%s's\e[m \e[33mTurn:\e[m \e[31m",name2);
+            printf ("\n\e[32m%s's\e[m \e[33mTurn:\e[m \e[32m",name2);
             while (1)
             {
                 input=getch();

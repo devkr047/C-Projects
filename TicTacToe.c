@@ -16,21 +16,6 @@ void winner (char name1[50],char name2[50],char name[50],int n);
 void winningSimulation(int n);
 char choice;
 int a[10][18];
-void restart(int a[][18])
-{
-    int i,j;
-    for (i=1;i<=9;i++)
-    {
-        for (j=1;j<=17;j++)
-        {
-            a[i][j]=-2;
-            if ((i==2 || i==5 || i==8) && (j==3 || j==9 || j==15))
-            {
-                a[i][j]=-1;
-            }
-        }
-    }
-}
 void main()
 {
     char ch;
@@ -61,6 +46,21 @@ void main()
         printf ("\e[1;31mExited Successfully\e[m");
         getch();
         exit(1);
+    }
+}
+void restart(int a[][18])
+{
+    int i,j;
+    for (i=1;i<=9;i++)
+    {
+        for (j=1;j<=17;j++)
+        {
+            a[i][j]=-2;
+            if ((i==2 || i==5 || i==8) && (j==3 || j==9 || j==15))
+            {
+                a[i][j]=-1;
+            }
+        }
     }
 }
 char home()
@@ -218,12 +218,13 @@ void startCompPlayerGame(char name1[50],char name2[50])
             printf ("\n\e[32m%s's\e[m \e[33mTurn:\e[m \e[32m",name1);
             srand(time(NULL));
             n=(rand()%9)+1;
-            printf ("%d",n);
-            sleep (1);
+            Sleep (100);
             printf ("\e[m");
             stat=checkstatus(n,i);
             if (stat==0)
             {
+                printf ("%d",n);
+                sleep (1);
                 i++;
                 k++;
                 break;
@@ -536,7 +537,14 @@ void winningSimulation(int n)
             for (i=1;i<=17;i++)
             {
                 gotoxy(i,4);
-                printf ("\e[1;33m-\e[m");
+                if (a[2][i]==1 || a[2][i]==2 || i==6 || i==12)
+                {
+                    continue;
+                }
+                else
+                {
+                    printf ("\e[1;33m-\e[m");
+                }
                 Sleep (100);
             }
             break;
@@ -546,7 +554,14 @@ void winningSimulation(int n)
             for (i=1;i<=17;i++)
             {
                 gotoxy(i,7);
-                printf ("\e[1;33m-\e[m");
+                if (a[5][i]==1 || a[5][i]==2 || i==6 || i==12)
+                {
+                    continue;
+                }
+                else
+                {
+                    printf ("\e[1;33m-\e[m");
+                }
                 Sleep (100);
             }
             break;
@@ -556,7 +571,14 @@ void winningSimulation(int n)
             for (i=1;i<=17;i++)
             {
                 gotoxy(i,10);
-                printf ("\e[1;33m-\e[m");
+                if (a[8][i]==1 || a[8][i]==2 || i==6 || i==12)
+                {
+                    continue;
+                }
+                else
+                {
+                    printf ("\e[1;33m-\e[m");
+                }
                 Sleep (100);
             }
             break;
@@ -566,7 +588,14 @@ void winningSimulation(int n)
             for (i=3;i<=11;i++)
             {
                 gotoxy(3,i);
-                printf ("\e[1;33m|\e[m");
+                if (a[i-2][3]==1 || a[i-2][3]==2)
+                {
+                    continue;
+                }
+                else
+                {
+                    printf ("\e[1;33m|\e[m");
+                }
                 Sleep (200);
             }
             break;
@@ -576,7 +605,14 @@ void winningSimulation(int n)
             for (i=3;i<=11;i++)
             {
                 gotoxy(9,i);
-                printf ("\e[1;33m|\e[m");
+                if (a[i-2][9]==1 || a[i-2][9]==2)
+                {
+                    continue;
+                }
+                else
+                {
+                    printf ("\e[1;33m|\e[m");
+                }
                 Sleep (200);
             }
             break;
@@ -586,7 +622,14 @@ void winningSimulation(int n)
             for (i=3;i<=11;i++)
             {
                 gotoxy(15,i);
-                printf ("\e[1;33m|\e[m");
+                if (a[i-2][15]==1 || a[i-2][15]==2)
+                {
+                    continue;
+                }
+                else
+                {
+                    printf ("\e[1;33m|\e[m");
+                }
                 Sleep (200);
             }
             break;
@@ -596,7 +639,14 @@ void winningSimulation(int n)
             for (i=3,j=1;i<=11,j<=17;i++,j+=2)
             {
                 gotoxy(j,i);
-                printf ("\e[1;33m\\\e[m");
+                if (a[i-2][j]==1 || a[i-2][j]==2)
+                {
+                    continue;
+                }
+                else
+                {
+                    printf ("\e[1;33m\\\e[m");
+                }
                 Sleep (100);
             }
             break;
@@ -606,7 +656,14 @@ void winningSimulation(int n)
             for (i=3,j=17;i<=11,j>=1;i++,j-=2)
             {
                 gotoxy(j,i);
-                printf ("\e[1;33m/\e[m");
+                if (a[i-2][j]==1 || a[i-2][j]==2)
+                {
+                    continue;
+                }
+                else
+                {
+                    printf ("\e[1;33m/\e[m");
+                }
                 Sleep (100);
             }
             break;

@@ -454,11 +454,11 @@ void draw(int a[][18])
         {
             if (j==6 || j==12)
             {
-                printf ("|");
+                printf ("\e[1m|\e[m");
             }
             else if (i==3 || i==6)
             {
-                printf ("_");
+                printf ("\e[1m_\e[m");
             }
             else if (a[i][j]==-1)
             {
